@@ -1,6 +1,6 @@
-/.ipynb_checkpoints
+/data
 /ipynb/.ipynb_checkpoints
+/ipynb/__pycache__
 /py/.ipynb_checkpoints
 /py/__pycache__
-
 *.txt
