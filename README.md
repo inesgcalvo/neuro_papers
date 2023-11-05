@@ -51,7 +51,7 @@
 The development of a comprehensive database for scientific publications in neuroscience is of utmost importance. With the rapid expansion of research in this field, a centralized repository can serve as a valuable resource for scholars, educators, and students alike. This initiative not only consolidates the existing knowledge but also paves the way for new discoveries and breakthroughs. 
 <div align="center">
   <a>
-    <img src="img/db_schema.png" alt="Logo" width="500">
+    <img src="img/db_schema.PNG" alt="neuro papers db" width="500">
   </a>
 </div>
    <br />
