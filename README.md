@@ -1,20 +1,14 @@
 <!-- README -->
 ### README
 <!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a>
-    <img src="img/logo_neuro_papers_2.png" alt="Logo" width="150">
-  </a>
+<div align="center"><a>
+  <img src="img/logo_neuro_papers_2.png" alt="Logo" width="150"></a>
   <h1 align="center">neuro papers db</h1>
   <p align="center">
-    2022 - 2023 Neuroscience Scientific Publications
-    <br />
-    <br />
-    <a href="https://github.com/inesgcalvo/neuroscience_papers"><strong>Explore the docs »</strong></a>
-  </p>
+    2022 - 2023 Neuroscience Scientific Publications<br><br>
+    <a href="https://github.com/inesgcalvo/neuro_papers">
+    <strong>Explore the docs »</strong></a></p>
 </div>
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -51,7 +45,7 @@
 The development of a comprehensive database for scientific publications in neuroscience is of utmost importance. With the rapid expansion of research in this field, a centralized repository can serve as a valuable resource for scholars, educators, and students alike. This initiative not only consolidates the existing knowledge but also paves the way for new discoveries and breakthroughs. 
 <div align="center">
   <a>
-    <img src="img/db_schema.PNG" alt="neuro papers db" width="500">
+    <img src="img/db_schema.PNG" alt="neuro papers db" width="700">
   </a>
 </div>
    <br />
@@ -64,16 +58,18 @@ The idea is to gather data from PubMed publications and enrich them with informa
 
 The following Python libraries have been used for this project: 
 
-* requests -- HTTP for Humans
-* pymongo -- written for MongoDB
-* selenium -- automates browsers
-* nltk -- Natural Language Toolkit
+* ``requests`` -- HTTP for Humans
+* ``pymongo`` -- written for MongoDB
+* ``selenium`` -- automates browsers
+* ``nltk`` -- Natural Language Toolkit
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
  <!-- DESCRIPTION -->
 ## Description
-A scientific article often contains several key elements that contribute to its credibility and accessibility. These elements include a Digital Object Identifier (**DOI**) for precise identification and referencing, a clear and concise **title** that succinctly reflects the content of the study, a list of **authors** indicating the individuals responsible for the research, their **affiliations**, and their respective institutional or organizational affiliations. The article also typically includes information about the **journal** in which it is published, such as the journal's name, publication **year**, and **month**, along with the specific **volume** and **page** numbers where the article can be found. In addition, some articles may include unique identifiers such as PubMed ID (**PMID**) and PubMed Central ID (**PMCID**) for efficient retrieval in relevant databases. Moreover, a comprehensive **abstract** summarizing the main objectives, methodologies, findings, and implications of the study is often provided to give readers a quick overview of the research's key points.
+A scientific article often contains several key elements that contribute to its credibility and accessibility. These elements include a Digital Object Identifier (<span style="color:red">**DOI**</span>) for precise identification and referencing, a clear and concise <span style="color:red">**title**</span> that succinctly reflects the content of the study, a list of <span style="color:red">**authors**</span> indicating the individuals responsible for the research, their <span style="color:red">**affiliations**</span>, and their respective institutional or organizational affiliations. The article also typically includes information about the <span style="color:red">**journal**</span> in which it is published, such as the journal's name, publication <span style="color:red">**year**</span>, and <span style="color:red">**month**</span>, along with the specific <span style="color:red">**volume**</span> and <span style="color:red">**page**</span> numbers where the article can be found. In addition, some articles may include unique identifiers such as PubMed ID (<span style="color:red">**PMID**</span>) and PubMed Central ID (<span style="color:red">**PMCID**</span>) for efficient retrieval in relevant databases. Moreover, a comprehensive <span style="color:red">**abstract**</span> summarizing the main objectives, methodologies, findings, and implications of the study is often provided to give readers a quick overview of the research's key points.
+
+_The words marked in <span style="color:red">**red**</span> indicate the elements I have collected for each article._
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
@@ -81,6 +77,13 @@ A scientific article often contains several key elements that contribute to its 
 <!-- USAGE EXAMPLES -->
 ## Extraction
 For the creation of this database, a diverse range of sources has been utilized to ensure comprehensive and robust data compilation. These sources encompass various reliable online repositories, and authoritative databases within the field.
+
+<div align="left">
+  <h4 align="left">Methods:<br>
+    - Web Scraping with <span style="font-family:Courier; color:orange">selenium</span><br>
+    - API data extraction with <span style="font-family:Courier; color:orange">requests</span><br>
+    - Archives from <a href="https://sci-hub.se/database">https://sci-hub.se/database</a>
+  </h4></p></div>
 
 ### PubMed
 PubMed is a free-access database that houses a vast collection of bibliographic references and abstracts of research articles in the fields of biomedicine and health.
@@ -95,13 +98,13 @@ bioRxiv is a free online archive and distribution service for unpublished prepri
    ```
     https://api.biorxiv.org/details/[server]/[interval]/[cursor]/[format]
    ```
-    - Server: biorxiv
+    - Server: ``biorxiv``
     - Intervals: 
     ```
     ['2022-01-01/2022-12-31',
     '2023-01-01/2023-12-31']
     ```
-    - Format: json
+    - Format: ``json``
 
 ### sci-Hub
 Sci-Hub is a controversial online repository that provides free access to a vast collection of academic articles, including those behind paywalls, bypassing traditional copyright and subscription barriers.
@@ -134,20 +137,35 @@ https://genderize.io/
 ## Transformation
 Data cleansing in pandas involves the process of detecting and rectifying any inconsistencies, inaccuracies, or anomalies within a dataset. Leveraging functionalities such as data filtering, handling missing values, and identifying outliers, data cleansing ensures the accuracy and reliability of the dataset.
 
+<div align="center">
+  <a><img src="img/article.PNG" alt="mongo" width="700"></a>
+  <span>Example of Extracted, Transformed, and Loaded data into MongoDB from a preprint via the biorxiv API.</span>
+</div><br />
+
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
 <!-- ROADMAP -->
 ## Roadmap
+Neuro Papers DB project roadmap outlines a series of essential tasks conducted as part of my ETL & data analysis pipeline:
 
-- [x] PubMed publications extraction with selenium
-- [x] Biorxiv API preprint 
-- [x] Crossref 'href' and 'json_href' extraction with selenium
-- [x] Data Cleansing
-- [ ] Genderize the names of the first and last authors.
+- [x] 01_pubmed.ipynb\
+Articles data was extracted from **PubMed** using `selenium`
+- [x] 02_biorxiv.ipynb\
+Preprints data was extracted from the biorXiv API with `requests`
+- [x] 03_crossref.ipynb\
+Crossref's 'href' and 'json_href' columns extraction with `selenium`
+- [x] 04_data_cleansing.ipynb\
+Data Cleansing with `pandas`
+- [ ] 05_genderize.ipynb\
+Genderize the first and the last authors with genderize API using `requests`
     - [x] First authors
     - [ ] Last authors
-- [x] Data Analytics
-- [ ] Queries for MongoDB
+- [x] 06_feeding_mongodb.ipynb\
+Feeding my MongoDB with DataFrames.
+- [x] 07_analysis.ipynb\
+Initial exploratory analysis of the extracted data with `matplotlib.pyplot`
+- [ ] 08_queries.ipynb\
+Queries for MongoDB with `pymongo`
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 

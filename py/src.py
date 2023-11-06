@@ -9,18 +9,26 @@ import matplotlib.pyplot as plt
 
 def remove_spaces_column_names(df):
     '''
-    input: df
-    output: df with column names without empty spaces
-    
+    Remove leading and trailing spaces from the column names.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    pandas.Index: DataFrame column names without empty spaces.
     '''
     df.columns = df.columns.str.strip()
     return df.columns
 
 def remove_spaces_columns(df):
     '''
-    input: df
-    output: df without empty spaces in column cells
-    
+    Remove leading and trailing spaces from the entries in the DataFrame columns.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    pandas.DataFrame: DataFrame with no empty spaces in column cells.
     '''
     for col in df.select_dtypes(include = 'object'):
         df[col] = df[col].str.strip()
@@ -28,40 +36,63 @@ def remove_spaces_columns(df):
 
 def any_duplicate(df):
     '''
-    input: df
-    output: boolean answer for: is there any duplicate?
-    
+    Check if there are any duplicate rows in the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    bool: Boolean value representing whether there are any duplicate rows.
     '''
     return df.duplicated().any()
 
 def specific_duplicates(df, cols):
     '''
-    input: df and a list with the names of the columns to check, ex: ['col1', 'col2']
-    output: a dataframe with the duplicates
-    
+    Extract a DataFrame of specific duplicated rows based on the specified columns.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+    cols (list): A list of column names to check for duplicates.
+
+    Returns:
+    pandas.DataFrame: DataFrame with the specified duplicates.
     '''
     duplicates = df.duplicated(subset = cols, keep = False)
     return df[duplicates]
 
 def drop_duplicates(df):
     '''
-    input: df
-    output: df without duplicates
-    
+    Drop duplicate rows from the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    None
     '''
     return df.drop_duplicates(inplace = True)
 
 def nan(df):
     '''
-    input: df
-    output: list with the column name and the amount of NaN values
+    Count the number of NaN values in each column of the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    pandas.Series: A series containing the column names and the amount of NaN values.
     '''
     return df.isna().sum().sort_values(ascending = False)
 
 def view_nan(df: pd.DataFrame) -> None:
     """
-    input: df
-    output: plot of NaN values per column
+    Visualize the NaN values per column in the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    None
     """
     plt.figure(figsize = (10, 6), facecolor = 'none') 
     sns.heatmap(df.isna(),           
@@ -72,8 +103,13 @@ def view_nan(df: pd.DataFrame) -> None:
 
 def low_variance(df):
     """
-    input: df
-    output: list of names of columns with low variance
+    Find columns in the DataFrame with low variance.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    list: A list of column names with low variance.
     """
     low_variance = []
     for col in df.select_dtypes(include = np.number): 
@@ -87,8 +123,13 @@ def low_variance(df):
 
 def constant_columns(df):
     """
-    input: df
-    output: 2 lists of names of constant columns 
+    Identify constant columns in the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    tuple: Two lists of names of constant columns (numeric and string types).
     """
     cte_cols = []
     cte_str_cols = []
@@ -102,8 +143,14 @@ def constant_columns(df):
 
 def find_special_chars(df, patron = r'[?¿*$%&]'):
     '''
-    input: df
-    output: a str with column, row and special char
+    Find special characters in the DataFrame's string columns.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+    patron (str): The regular expression pattern to search for special characters.
+
+    Returns:
+    None
     '''
     try:
         for col in df.select_dtypes(include = 'object').columns:
@@ -117,8 +164,13 @@ def find_special_chars(df, patron = r'[?¿*$%&]'):
 
 def unique_values(df):
     '''
-    input: df
-    output: a list with the column name and the amount of unique values
+    Find the number of unique values in each column of the DataFrame.
+
+    Parameters:
+    df (pandas.DataFrame): The input DataFrame.
+
+    Returns:
+    list: A list of tuples containing the column name and the count of unique values in each column.
     '''
     return sorted([(col, len(df[col].unique())) for col in df.columns], key = lambda x: x[1])
 
@@ -126,7 +178,15 @@ def unique_values(df):
 # Asincrono
 
 def asincrono(funcion):
+    '''
+    Asynchronous decorator to execute the given function.
 
+    Parameters:
+    funcion (function): The function to be executed asynchronously.
+
+    Returns:
+    function: Asynchronously executed function.
+    '''
     def eventos(*args, **kwargs):
         return asyncio.get_event_loop().run_in_executor(None, funcion, *args, **kwargs)
     
