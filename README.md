@@ -69,11 +69,7 @@ The following Python libraries have been used for this project:
 ## Description
 A scientific article often contains several key elements that contribute to its credibility and accessibility. These elements include a Digital Object Identifier (<span style="color:#FF0000">**DOI**</span>) for precise identification and referencing, a clear and concise <span style="color:#FF0000">**title**</span> that succinctly reflects the content of the study, a list of <span style="color:#FF0000">**authors**</span> indicating the individuals responsible for the research, their <span style="color:#FF0000">**affiliations**</span>, and their respective institutional or organizational affiliations. The article also typically includes information about the <span style="color:#FF0000">**journal**</span> in which it is published, such as the journal's name, publication <span style="color:#FF0000">**year**</span>, and <span style="color:#FF0000">**month**</span>, along with the specific <span style="color:#FF0000">**volume**</span> and <span style="color:#FF0000">**page**</span> numbers where the article can be found. In addition, some articles may include unique identifiers such as PubMed ID (<span style="color:#FF0000">**PMID**</span>) and PubMed Central ID (<span style="color:#FF0000">**PMCID**</span>) for efficient retrieval in relevant databases. Moreover, a comprehensive <span style="color:#FF0000">**abstract**</span> summarizing the main objectives, methodologies, findings, and implications of the study is often provided to give readers a quick overview of the research's key points.
 
-<<<<<<< HEAD
-_The words marked in <span style="color:#FF0000">**red**</span> indicate the elements I have collected for each article._
-=======
-_The words marked in <span style="color:red">**bold**</span> indicate the elements I have collected for each article._
->>>>>>> a93a49f86e541a782c6bbba16afd8e07946bcdf3
+_The words marked in <span style="color:#FF0000">**bold**</span> indicate the elements I have collected for each article._
 
 <p align="right">(<a href="#readme">Back to top</a>)</p>
 
